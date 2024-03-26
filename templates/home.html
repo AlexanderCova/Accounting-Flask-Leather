@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accounting Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .menu {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .menu a {
+            margin: 0 10px;
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .menu a:hover {
+            background-color: #45a049;
+        }
+
+        .logout {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .main-container {  
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            grid-template-rows: 1fr;
+            gap: 0px 0px;
+            grid-auto-flow: row;
+        }
+
+        .list { 
+            grid-area: 1 / 1 / 2 / 2; 
+            width: 500px;
+        }
+
+        .overview { 
+            grid-area: 1 / 2 / 2 / 3; 
+            display: flex;
+            flex-direction: column;
+        }
+
+        .background-box {
+            width: auto;
+            margin: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .button {
+            margin: 0 10px;
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            text-align: center;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+
+        .square {
+            padding-top: 25%;
+            padding-bottom: 25%;
+        }
+
+        .list {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .list-item {
+            display: flex;
+            flex-direction: row;
+            gap: 15px;
+        }
+        .list-text {
+            font-size: 1.5rem;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Accounting Home</h1>
+        <div class="menu">
+            <a href="#">Home</a>
+            <a href="#">Transactions</a>
+            <a href="#">Reports</a>
+            <!-- Add more links for other functionalities -->
+        </div>
+        <div class="logout">
+            <a href="/">Logout</a>
+        </div>
+
+        
+    </div>
+    <div class="main-container">
+        <div class="list background-box">
+            {% for item in entries %}
+                <div class="list-item">
+                    <p class="list-text">ID: {{item[0]}}</p>
+                    <p class="list-text">Title: {{item[1]}}</p>
+                    <p class="list-text">Amount: {{item[3]}}</p>
+                </div>
+            {% endfor %}
+
+
+        </div>
+        <div class="overview background-box">
+            <a class="button" href="/create-record">Create Record</a>
+            <div class="background-box square">
+                <h1>{{ account_total }}</h1>
+            </div>
+        </div>
+      </div>
+    
+</body>
+</html>
